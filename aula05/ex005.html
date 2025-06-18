@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Primeiros passos com DOM</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Estudos com DOM</h1>
+    <p>Resultado</p>
+    <p>Aprendendo <strong>DOM</strong> em JavaScript</p>
+    <div id="xan">Clique aqui!</div>
+    <script>
+        var x1 = document.getElementsByTagName('p')[0]
+        //var x = document.getElementById('xan')//
+        var x = document.querySelector('div#xan')
+        x.style.color = 'blue'
+        document.write(x1.innerText)
+        x1.style.color = 'red'
+    </script>
 </body>
 </html>
