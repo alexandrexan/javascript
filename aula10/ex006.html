@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 0, 0, 0.459);
+        }
+        #area {
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgb(0, 0, 0);
+            background-color: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(0, 0, 0);
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="area">
+        Interaja!
+    </div>
+
+    <script>
+        var a = document.getElementById('area'); // Este texto fora do function serve para todos (clicar, entrar, sair) O texto dentro do function serve apenas para aquela função específica.
+        a.addEventListener('click', clicar);
+        a.addEventListener('mouseenter', entrar);
+        a.addEventListener('mouseout', sair);
+
+        function clicar() {
+            a.innerText = 'Clicou!';
+            a.style.backgroundColor = 'white';
+            a.style.color = 'red';
+        }
+        function entrar() {
+            a.innerText = 'Entrou!';
+            a.style.backgroundColor = 'green';
+            a.style.color = 'white';
+
+        }
+        function sair() {
+            a.innerText = 'Saiu!';
+            a.style.backgroundColor = 'red';
+            a.style.color = 'white';
+        }
+    </script>
+</body>
+</html>
