@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex011 em Site</title>
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color: darksalmon;
+            text-align: center;
+            padding: 10px;
+        }
+        label, input {
+            font-size: 20px;
+        }
+        button {
+            font-size: 20px;
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #4caf4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>exercício 011 (Site)</h1>
+    <h2>Idades para Votar</h2>
+    <label for="idade">Digite sua idade:</label>
+    <input type="number" id="idade" min="0">
+    <button onclick="verificarVoto()">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function verificarVoto() {
+            var idade = Number(document.getElementById('idade').value)
+            var res = document.getElementById('resultado')
+            if (idade <= 15) {
+                res.innerText = 'Não vota'
+            } else if ((idade == 16 || idade == 17) || idade >= 70) {
+                res.innerText = 'Voto opcional'
+            } else {
+                res.innerText = 'Voto obrigatório'
+            }
+            // res.style.backgroundColor = 'cor' fundo ao aparecer o resultado
+        }
+        document.getElementById('idade').addEventListener('input', function() {
+            var res = document.getElementById('resultado')
+            res.innerText = ''
+            // res.style.backgroundColor = 'transparent' Limpa o resultado ao digitar
+        })
+    </script>
+</body>
+</html>

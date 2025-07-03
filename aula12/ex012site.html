@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex012 Site</title>
+    <style>
+        body {
+            background-color: #00000023;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #msg {
+            font-size: 1.5em;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercício 012 - Site</h1>
+    <h2>Hora do Dia</h2>
+    <div id="msg"></div>
+    <script>
+        function atualizarHorario() {
+            var live = new Date()
+            var hora = live.getHours()
+            var minuto = live.getMinutes()
+            var segundo = live.getSeconds()
+            var mensagem = `Agora são exatamente ${hora.toString().padStart(2, '0')} horas, ${minuto.toString().padStart(2, '0')} minutos e ${segundo.toString().padStart(2, '0')} segundos.<br>`
+            if (hora < 12) {
+                mensagem += 'Bom dia!'
+            } else if (hora < 18) {
+                mensagem += 'Boa tarde!'
+            } else {
+                mensagem += 'Boa noite!'
+            }
+            document.getElementById('msg').innerHTML = mensagem
+        }
+
+        // Atualiza imediatamente ao carregar
+        atualizarHorario()
+        // Atualiza a cada segundo
+        setInterval(atualizarHorario, 1000)
+    </script>
+</body>
+</html>
