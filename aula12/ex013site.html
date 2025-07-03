@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias da Semana</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: #181c24;
+            color: #e0e6ed;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin: 0.3em 0;
+            font-weight: 400;
+        }
+        h1 {
+            font-size: 2.2em;
+            color: #8ecae6;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1.3em;
+            color: #adb5bd;
+        }
+        h3 {
+            font-size: 1.1em;
+            color: #8f9ca7;
+        }
+        #resultado {
+            font-size: 1.7em;
+            font-weight: 500;
+            margin-top: 30px;
+            background: #23283a;
+            color: #f1f1f1;
+            padding: 18px 36px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px 0 #00000036;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dias da Semana - JS</h1>
+    <h2>Usando o switch e break</h2>
+    <h3>Exemplo de uso do switch case para dias da semana</h3>
+    <div id="resultado"></div>
+
+    <script>
+        var agora = new Date()
+        var diaSem = agora.getDay()
+        var nomeDia = ""
+
+        switch (diaSem) {
+            case 0:
+                nomeDia = "Domingo"
+                break
+            case 1:
+                nomeDia = "Segunda"
+                break
+            case 2:
+                nomeDia = "Terça"
+                break
+            case 3:
+                nomeDia = "Quarta"
+                break
+            case 4:
+                nomeDia = "Quinta"
+                break
+            case 5:
+                nomeDia = "Sexta"
+                break
+            case 6:
+                nomeDia = "Sábado"
+                break
+        }
+
+        document.getElementById('resultado').innerText = `Hoje é ${nomeDia}.`
+    </script>
+</body>
+</html>
