@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo de Exercício</title>
+    <title>Hora do Dia</title>
     <style>
         body {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            background-color: #c0c0c0;
+            background-color: #f8f8f807;
         }
         header {
-            background-color: #a0a0a0;
             text-align: center;
             padding: 20px;
             font-size: 1.5em;
-            color: #000;
+            color: #ffffff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             height: 80px;
@@ -33,36 +32,50 @@
             border-radius: 10px;
             box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
             margin: 0 auto 40px auto;
+            text-align: center;
         }
         footer {
-            background-color: #a0a0a0;
             text-align: center;
             padding: 10px;
-            position: fixed;
+            position: relative;
             bottom: 0;
             left: 0;
             right: 0;
             font-size: 0.8em;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
             font-style: italic;
+            color: white;
+            font-size: 16px;
         }
         a {
-            color: #8400ff;
+            color: #fbff00;
             text-decoration: none;
             letter-spacing: 1px;
         }
+        .imagem-dia {
+            width: 400px;
+            max-width: 90vw;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            display: block;
+            margin: 20px auto;
+        }
+        #msg {
+            font-size: 1.2em;
+            color: #333;
+        }
     </style>
 </head>
-<body>
+<body onload="carregar()">
     <header>
-        <h1>Modelo de Exercício</h1>
+        <h1>Hora do Dia</h1>
     </header>
     <section>
-        <div>
-            teste
+        <div id="msg">
+            Mensagem apresentada de acordo com a hora do dia.
         </div>
-        <div>
-            teste
+        <div id="foto">
+            <img id="imagem" class="imagem-dia" src="imagens/manha.jpg" alt="Foto do Dia">
         </div>
     </section>
     <footer>
