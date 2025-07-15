@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+    <section>
+        <div>
+            <p>Ano de Nascimento:
+                <input type="number" id="ano" placeholder="Digite seu ano de nascimento">
+            </p>
+            
+            <p>Sexo:
+                <input type="radio" name="sexo" id="masc" value="masculino"> Masculino
+                <input type="radio" name="sexo" id="fem" value="feminino"> Feminino
+            </p>
+            <button id="verificar" onclick="verificar()">Verificar</button>
+        </div>
+        <div id="res">
+            <p>Preencha os dados acima e clique em "Verificar".</p>
+        </div>
+    </section>
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/alexandrexan" target="_blank"><strong>XAN</strong></a></p>
+    </footer>
+    <script src="script.js"></script>
+</html>
