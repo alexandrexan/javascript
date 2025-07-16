@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: black;
+            color: white;
+        }
+        button {
+            background-color: #ffffff;
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100px;
+            height: 80px;
+        }
+        button:hover {
+            background-color: lightgreen;
+        }
+        button:active {
+            background-color: rgb(255, 0, 0);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desafio das Mensagens</h1>
+    <button onclick="mostrarMensagem(1)">Botão 1</button>
+    <button onclick="mostrarMensagem(2)">Botão 2</button>
+    <button onclick="mostrarMensagem(3)">Botão 3</button>
+
+    <script>
+        function mostrarMensagem(botão) {
+            alert("Você clicou no " + botão + "° botão.");
+        }
+    </script>
+</body>
+</html>

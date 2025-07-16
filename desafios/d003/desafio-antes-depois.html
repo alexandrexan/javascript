@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antes e Depois</title>
+    <style>
+        body {
+            background-color: darkslateblue;
+            color: lemonchiffon;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        button {
+            background-color: red;
+            color: lemonchiffon;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 250px;
+            height: 100px;
+
+        }
+        button:hover {
+            background-color: yellow;
+            color: darkslateblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antes e Depois</h1>
+    <button onclick="calcular('antes')">Antecessor e Sucessor de números</button>
+    <script>
+        function calcular(tipo) {
+            const numero = parseInt(prompt("Digite um número:"));
+            if (isNaN(numero)) {
+                alert("Por favor, digite um número válido.");
+                return;
+            }
+            if (tipo === 'antes') {
+                alert("Antecessor de " + numero + " é: " + (numero - 1) + "\nSucessor de " + numero + " é: " + (numero + 1));
+            }
+        }
+    </script>
+
+</body>
+</html>
