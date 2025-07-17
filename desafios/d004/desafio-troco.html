@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcule o Troco</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: darkslategray;
+            color: white;;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculando o Troco</h1>
+    <button onclick="calcularTroco()">Fazer compra</button>
+    <script>
+        function formatarReaisSemDecimal(valor) {
+            // Arredonda para inteiro
+            const valorInteiro = Math.round(valor);
+
+            // Formata com pt-BR, sem casas decimais
+            return valorInteiro.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+        }
+
+        function calcularTroco() {
+            const produto = prompt("Qual o nome do produto?");
+            const preço = parseFloat(prompt("Qual o valor do produto (em reais)?"));
+            const valorPago = parseFloat(prompt("Quanto foi pago (em reais)?"));
+
+            if (!produto || isNaN(preço) || isNaN(valorPago)) {
+                alert("Dados inválidos. Tente novamente.");
+                return;
+            }
+
+            const troco = valorPago - preço;
+
+            const preçoFormatado = formatarReaisSemDecimal(preço);
+            const pagoFormatado = formatarReaisSemDecimal(valorPago);
+            const trocoFormatado = formatarReaisSemDecimal(troco);
+            const faltaFormatado = formatarReaisSemDecimal(Math.abs(troco));
+
+            if (troco < 0) {
+                alert(
+                    `Você comprou um(a) ${produto}, que custa ${preçoFormatado}.\n` +
+                    `Pagou ${pagoFormatado}.\n` +
+                    `Faltam ${faltaFormatado} para completar a compra.`
+                );
+            } else if (troco === 0) {
+                alert(
+                    `Você comprou um(a) ${produto}, que custa ${preçoFormatado}.\n` +
+                    `Pagou exatamente ${pagoFormatado}.\n` +
+                    `Não há troco. Obrigado e volte sempre!`
+                );
+            } else {
+                alert(
+                    `Você comprou um(a) ${produto}, que custa ${preçoFormatado}.\n` +
+                    `Pagou ${pagoFormatado}.\n` +
+                    `Troco: ${trocoFormatado}.`
+                );
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Medidas</title>
+    <style>
+    body {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin: 40px;
+        background-color: lightslategrey;
+    }
+    button {
+        background-color: yellow;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    #resultado {
+        margin-top: 20px;
+        white-space: pre-line;
+        color: black;
+        font-weight: bold;
+        font-size: 19px;
+        padding: 10px;
+        line-height: 1.8;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Distância</h1>
+    <button onclick="converter()">Clique para digitar a distância</button>
+    <div id="resultado"></div>
+
+    <script>
+    function converter() {
+        const entrada = prompt("Digite a distância em metros:");
+        const metros = parseFloat(entrada);
+
+        if (isNaN(metros)) {
+        document.getElementById("resultado").textContent = "Por favor, digite um número válido.";
+        return;
+        }
+
+        const km = metros / 1000;
+        const hm = metros / 100;
+        const dam = metros / 10;
+        const dm = metros * 10;
+        const cm = metros * 100;
+        const mm = metros * 1000;
+
+        const resultado = 
+        `A distância de: ${metros} metros, convertida para outras medidas é:\n\n` +
+        `→ Quilômetros (km): ${km}\n` +
+        `→ Hectômetros (hm): ${hm}\n` +
+        `→ Decâmetros (dam): ${dam}\n` +
+        `→ Decímetros (dm): ${dm}\n` +
+        `→ Centímetros (cm): ${cm}\n` +
+        `→ Milímetros (mm): ${mm}`;
+
+        document.getElementById("resultado").textContent = resultado;
+    }
+    </script>
+</body>
+</html>
