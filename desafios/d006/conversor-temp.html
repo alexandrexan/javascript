@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio - Conversor de Temperatura</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: darkgrey;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 25px 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Garante que padding não afete a largura total */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.6; /* Melhora a legibilidade com quebras de linha */
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Temperatura</h1>
+    <input type="number" id="celsiusInput" placeholder="Digite a temperatura em °C">
+    
+    <button onclick="converterTemperatura()">Converter</button>
+    <p><strong>Clique no botão para converter a temperatura.</strong></p>
+    
+    <p id="resultado"></p>
+</div>
+
+<script>
+    function converterTemperatura() {
+        // Pega o elemento do resultado para poder escrever nele
+        const resultadoElemento = document.getElementById('resultado');
+
+        // Pega o valor do campo de entrada e converte para número
+        const celsiusInput = document.getElementById('celsiusInput').value;
+        const celsius = parseFloat(celsiusInput);
+
+        // Verifica se a entrada está vazia ou não é um número válido
+        if (celsiusInput === "" || isNaN(celsius)) {
+            resultadoElemento.textContent = "Por favor, insira um número válido.";
+            resultadoElemento.style.color = "red"; // Muda a cor do texto para indicar um erro
+            return;
+        }
+
+        // Calcula as temperaturas
+        const fahrenheit = (celsius * 9/5) + 32;
+        const kelvin = celsius + 273.15;
+
+        // Exibe o resultado formatado no parágrafo abaixo do botão
+        resultadoElemento.style.color = "#333"; // Restaura a cor original do texto
+        resultadoElemento.innerHTML = 
+            `Temperatura em Fahrenheit: <strong>${fahrenheit.toFixed(2)} °F</strong><br>
+            Temperatura em Kelvin: <strong>${kelvin.toFixed(2)} K</strong>`;
+    }
+</script>
+</body>
+</html>
