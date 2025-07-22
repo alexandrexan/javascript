@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Desconto</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #e0e0e0; /* Cinza claro para texto */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh; /* Ocupa a altura total da tela */
+            box-sizing: border-box; /* Inclui padding na largura/altura total */
+        }
+        .container {
+            background-color: #2a2a4a;
+            padding: 40px;
+            border-radius: 12px; /* Cantos mais arredondados */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada */
+            max-width: 550px; /* Um pouco mais largo */
+            width: 100%; /* Garante que ocupe o espaço disponível */
+            text-align: center;
+        }
+        h1 {
+            color: #8be9fd;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #b0b0b0; /* Cinza médio para descrições */
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600; /* Mais negrito */
+            color: #c0c0c0; /* Cinza claro para labels */
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 24px); /* Ajuste para padding */
+            padding: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #4a4a6a; /* Borda mais escura */
+            border-radius: 6px;
+            font-size: 17px;
+            background-color: #3a3a5a; /* Fundo do input mais escuro */
+            color: #e0e0e0; /* Texto do input claro */
+            outline: none; /* Remove outline padrão */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #8be9fd; /* Borda azul ciano ao focar */
+            box-shadow: 0 0 0 3px rgba(139, 233, 253, 0.3); /* Sombra suave ao focar */
+        }
+        button {
+            background-color: #6272a4;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            width: 100%;
+            letter-spacing: 0.5px; /* Espaçamento entre letras */
+        }
+        #resultado {
+            margin-top: 15px;
+            padding-top: 25px;  /* Linha divisória mais escura */
+            font-size: 1.15em;
+            text-align: left;
+            line-height: 1.6; /* Espaçamento entre linhas */
+        }
+        #resultado p {
+            margin-bottom: 12px;
+            color: #d0d0d0; /* Cor do texto dos resultados */
+        }
+        #resultado strong {
+            color: #50fa7b; /* Verde vibrante para os valores importantes */
+            font-weight: bold;
+        }
+        #resultado p strong {
+            display: inline-block; /* Garante que o strong não quebre a linha */
+            margin-left: 5px; /* Pequeno espaçamento */
+        }
+        #resultado p[style*="color: red"] { /* Estilo para mensagem de erro */
+            color: #ff6e6e !important; /* Vermelho suave para erro */
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calcular Desconto</h1>
+        <p>Qual o nome do produto que está comprando?</p>
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input type="text" id="nomeProduto" placeholder="Ex: Camiseta">
+
+        <label for="precoProduto">Qual o preço do produto?</label>
+        <input type="number" id="precoProduto" step="0.01" placeholder="Ex: 99.90">
+
+        <button onclick="calcularDesconto()">Calcular Desconto</button>
+
+        <div id="resultado">
+            </div>
+    </div>
+
+    <script>
+        function calcularDesconto() {
+            const nomeProduto = document.getElementById('nomeProduto').value;
+            const precoProduto = parseFloat(document.getElementById('precoProduto').value);
+            const resultadoDiv = document.getElementById('resultado');
+
+            // Limpa resultados anteriores
+            resultadoDiv.innerHTML = '';
+
+            if (isNaN(precoProduto) || precoProduto <= 0) {
+                resultadoDiv.innerHTML = '<p style="color: red;">Por favor, insira um preço válido para o produto.</p>';
+                return;
+            }
+
+            const desconto = precoProduto * 0.10; // 10% de desconto
+            const precoFinal = precoProduto - desconto;
+
+            let nomeProdutoHTML = '';
+            if (nomeProduto.trim() === '') {
+            // Se o nome estiver vazio, aplica o estilo inline diretamente ao strong
+            nomeProdutoHTML = '<strong style="color: #ff6e6e;">Produto não especificado</strong>';
+            } else {
+            // Caso contrário, usa o nome fornecido, que receberá o estilo padrão de strong (verde)
+            nomeProdutoHTML = `<strong>${nomeProduto}</strong>`;
+            }
+
+            resultadoDiv.innerHTML = `
+                <p>Produto: ${nomeProdutoHTML}</p>
+                <p>Preço Original: R$ ${precoProduto.toFixed(2).replace('.', ',')}</p>
+                <p>Desconto (10%): R$ ${desconto.toFixed(2).replace('.', ',')}</p>
+                <p>Valor a Pagar: <strong>R$ ${precoFinal.toFixed(2).replace('.', ',')}</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
