@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula de Bhaskara</title>
+    <style>
+        body {
+            background-color: #212529;
+            color: #adb5bd;
+            font-family: cursive;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #adb5bd;
+        }
+        button
+        {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #80ed99;
+            color: #212529;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resolvendo Bhaskara</h1>
+    <input type="text" id="a" placeholder="Valor de a" />
+    <input type="text" id="b" placeholder="Valor de b" />
+    <input type="text" id="c" placeholder="Valor de c" />
+    <button onclick="calcularBhaskara()">Calcular</button>
+    <p>Considerando uma equação no formato <strong style="color: #F8F9FA;">ax² + bx + c = 0</strong>, insira os valores e aperte o botão acima para calcular o valor de Δ (delta).</p>
+    <div id="resultado"></div>
+    <script>
+        function calcularBhaskara() {
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+            const c = parseFloat(document.getElementById("c").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("resultado").innerHTML = "<strong style='color: #eb5e28;'>Por favor, insira valores numéricos válidos.</strong>";
+                return;
+            }
+
+            const delta = b * b - 4 * a * c;
+
+            // Construindo a mensagem de saída
+            let outputMessage = `
+                <p>A equação atual é: ${a}x² + ${b}x + ${c} = 0</p>
+                <p>O cálculo realizado para Δ é: ${b}² - 4 * ${a} * ${c}</p>
+                <p>O valor de <strong style="color: #fca311;">Δ (delta) é: ${delta}</strong></p>
+            `;
+
+            document.getElementById("resultado").innerHTML = outputMessage;
+        }
+    </script>
+</body>
+</html>
