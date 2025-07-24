@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ano Bissexto</title>
+    <style>
+        body {
+            background-color: #fdf0d5;
+            color: #003049;
+            font-family: cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #003049;
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            background-color: #003049;
+            color: #fdf0d5;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ano Bissexto</h1>
+    <h3>Informe um ano para saber se é bissexto.</h3>
+    <input type="number" id="ano" placeholder="Digite o ano" />
+    <button onclick="verificarAnoBissexto()">Verificar</button>
+    <div id="resultado"></div>
+    <script>
+        function verificarAnoBissexto() {
+            const ano = parseInt(document.getElementById("ano").value);
+            const resultadoDiv = document.getElementById("resultado");
+
+            if (isNaN(ano)) {
+                resultadoDiv.innerHTML = "<p style='color: #c1121f;'><strong>Por favor, insira um ano válido.</strong></p>";
+                return;
+            }
+
+            if ((ano % 4 === 0 && ano % 100 !== 0) || (ano % 400 === 0)) {
+                resultadoDiv.innerHTML = `<p style='color: #2a9d8f;'><strong>${ano} é um ano bissexto.</strong></p>`;
+            } else {
+                resultadoDiv.innerHTML = `<p style='color: #eb5e28;'><strong>${ano} não é um ano bissexto.</strong></p>`;
+            }
+        }
+    </script>
+</body>
+</html>

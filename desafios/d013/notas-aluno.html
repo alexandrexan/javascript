@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do Aluno</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, Times, serif;
+            background-color: #AC9FBB;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #DDBDD5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        button {
+            background-color: #9e7ec2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #resultado {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 1.2em;
+            word-wrap: break-word; /* Garante que o texto não transborde */
+        }
+        /* Classes para as palavras de situação */
+        .aprovado-texto-cor {
+        color: #28a745;
+        font-weight: bold;
+        }
+
+        .reprovado-texto-cor {
+        color: #dc3545;
+        font-weight: bold;
+        }
+
+        .recuperacao-texto-cor {
+        color: #EE6123;
+        font-weight: bold;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Situação do Aluno</h1>
+        <div class="input-group">
+            <label for="nomeAluno">Nome do Aluno:</label>
+            <input type="text" id="nomeAluno">
+        </div>
+        <div class="input-group">
+            <label for="nota1">Primeira Nota:</label>
+            <input type="number" id="nota1" min="0" max="10" step="0.1">
+        </div>
+        <div class="input-group">
+            <label for="nota2">Segunda Nota:</label>
+            <input type="number" id="nota2" min="0" max="10" step="0.1">
+        </div>
+        <button onclick="calcularMedia()">Calcular Média</button>
+        <div id="resultado">
+            </div>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            const nomeAluno = document.getElementById('nomeAluno').value;
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+            const resultadoDiv = document.getElementById('resultado');
+
+            // Limpa o resultado anterior
+            resultadoDiv.className = '';
+            resultadoDiv.innerHTML = '';
+
+            if (nomeAluno === "" || isNaN(nota1) || isNaN(nota2)) {
+                resultadoDiv.innerHTML = '<strong>Por favor, preencha todos os campos com valores válidos.</strong>';
+                resultadoDiv.classList.add('reprovado'); // Apenas para destacar o erro
+                return;
+            }
+
+            if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10) {
+                resultadoDiv.innerHTML = 'As notas devem estar entre 0 e 10.';
+                resultadoDiv.classList.add('reprovado'); // Apenas para destacar o erro
+                return;
+            }
+
+            const media = (nota1 + nota2) / 2;
+            let situacao = '';
+            let classeSituacao = '';
+
+            if (media < 3.0) {
+            situacao = '<span class="reprovado-texto-cor">REPROVADO</span>';
+            classeSituacao = 'reprovado'; // Classe para o background vermelho da div
+        } else if (media >= 3.0 && media < 6.0) {
+            situacao = '<span class="recuperacao-texto-cor">RECUPERAÇÃO</span>';
+            classeSituacao = 'recuperacao'; // Classe para o background amarelo da div
+        } else {
+            situacao = '<span class="aprovado-texto-cor">APROVADO</span>';
+            classeSituacao = 'aprovado'; // Classe para o background verde da div
+            }
+
+            resultadoDiv.classList.add(classeSituacao);
+            resultadoDiv.innerHTML = `
+                <p>Nome do Aluno: <strong>${nomeAluno}</strong></p>
+                <p>Primeira Nota: <strong>${nota1.toFixed(1)}</strong></p>
+                <p>Segunda Nota: <strong>${nota2.toFixed(1)}</strong></p>
+                <p>Média: <strong>${media.toFixed(1)}</strong></p>
+                <p>Situação: <strong>${situacao.replace('APROVADO', '<span style="color: green;">APROVADO</span>')}</strong></p>
+            `;
+        }
+    </script>
+</body>
+</html>
