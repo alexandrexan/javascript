@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: lightslategrey;
+        }
+        header {
+            background-color: lightslategrey;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5em;
+            color: #000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 40px auto;
+        }
+        footer {
+            background-color: lightslategrey;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-style: italic;
+            font-size: 1.0em;
+        }
+        a {
+            color: #000000;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        #contador {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #8400ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contando...</h1>
+    </header>
+    <section>
+        <div id="contador">
+            <label for="txtInicio">Início:</label>
+            <input type="text" id="txtInicio" placeholder="" /><br>
+            <label for="txtFim">Fim:</label>
+            <input type="text" id="txtFim" placeholder="" /><br>
+            <label for="txtPasso">Passo:</label>
+            <input type="text" id="txtPasso" placeholder="" /><br>
+            <button id="btnContar">Contar</button>
+            <p id="msg">Clique no botão para começar.</p>
+        </div>
+        <div>
+            <p id="resultado"></p>
+        </div>
+    </section>
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/alexandrexan" target="_blank"><strong>XAN</strong></a></p>
+    </footer>
+    <script>
+        const btnContar = document.getElementById('btnContar');
+        const resultado = document.getElementById('resultado');
+        const msg = document.getElementById('msg');
+
+        btnContar.addEventListener('click', () => {
+            const inicio = parseInt(document.getElementById('txtInicio').value);
+            const fim = parseInt(document.getElementById('txtFim').value);
+            const passo = parseInt(document.getElementById('txtPasso').value);
+
+            if (isNaN(inicio) || isNaN(fim) || isNaN(passo)) {
+                msg.style.color = 'red';
+                msg.style.fontWeight = 'bold';
+                msg.textContent = 'Por favor, preencha todos os campos corretamente.';
+                resultado.textContent = '';
+                return;
+            }
+
+            if (passo <= 0) {
+                msg.style.color = 'red';
+                msg.style.fontWeight = 'bold';
+                msg.textContent = 'O passo deve ser maior que zero.';
+                resultado.textContent = '';
+                return;
+            }
+
+            msg.style.color = 'green';
+            msg.style.fontWeight = 'bold';
+            msg.textContent = 'Contando:';
+            resultado.textContent = '';
+
+            for (let i = inicio; i <= fim; i += passo) {
+                resultado.textContent += `${i} \u{27A1}`;
+            }
+        });
+    </script>
+</html>
