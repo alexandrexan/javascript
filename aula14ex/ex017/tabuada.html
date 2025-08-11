@@ -93,7 +93,7 @@
         <div id="res">
             <p id="resultado"></p>
         </div>
-        <div>
+        <div id="mensagemInicial">
             <p>Digite um número para ver sua tabuada:</p>
         </div>
     </section>
@@ -104,18 +104,24 @@
         document.getElementById('btnCalcular').addEventListener('click', function() {
             const numero = parseInt(document.getElementById('txtNumero').value);
             const resultado = document.getElementById('resultado');
+            const mensagemInicial = document.getElementById('mensagemInicial');
+
             if (isNaN(numero)) {
                 resultado.style.color = 'red';
                 resultado.textContent = 'Por favor, insira um número válido.';
+                mensagemInicial.style.display = 'block';
                 return;
             }
+
             let tabuada = '';
             for (let i = 1; i <= 10; i++) {
                 tabuada += `${numero} x ${i} = ${numero * i}<br>`;
             }
+
             resultado.innerHTML = tabuada;
             resultado.style.color = 'black';
             resultado.style.fontWeight = 'bold';
+            mensagemInicial.style.display = 'none';
         });
     </script>
 </html>

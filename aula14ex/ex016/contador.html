@@ -121,8 +121,16 @@
             msg.textContent = 'Contando:';
             resultado.textContent = '';
 
-            for (let i = inicio; i <= fim; i += passo) {
-                resultado.textContent += `${i} \u{27A1}`;
+            //Contagem crescente
+            if (inicio < fim) {
+                for (let i = inicio; i <= fim; i += passo) {
+                    resultado.textContent += `${i} ➡️`;
+                }
+            } else {
+                //Contagem decrescente
+                for (let i = inicio; i >= fim; i -= passo) {
+                    resultado.textContent += `${i} ➡️`;
+                }
             }
         });
     </script>
