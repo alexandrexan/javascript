@@ -73,7 +73,7 @@
 
         // Verifica se a entrada está vazia ou não é um número válido
         if (celsiusInput === "" || isNaN(celsius)) {
-            resultadoElemento.textContent = "Por favor, insira um número válido.";
+            resultadoElemento.innerHTML = "Por favor, insira um número válido.";
             resultadoElemento.style.color = "red"; // Muda a cor do texto para indicar um erro
             return;
         }

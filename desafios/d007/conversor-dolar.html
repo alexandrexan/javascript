@@ -122,7 +122,8 @@
 
                 if (cotacaoDolarAtual > 0) {
                     cotacaoAtualElement.textContent = `Dólar atual: R$ ${cotacaoDolarAtual.toFixed(2)}`;
-                    cotacaoAtualElement.style.color = "#a3be8c"; // Verde para indicar sucesso
+                    cotacaoAtualElement.style.color = "#a3be8c";
+                    cotacaoAtualElement.style.fontWeight = "bold"; 
                 } else {
                     cotacaoAtualElement.textContent = "Não foi possível obter a cotação. Tente novamente mais tarde.";
                     cotacaoAtualElement.style.color = "#bf616a"; // Vermelho para erro
