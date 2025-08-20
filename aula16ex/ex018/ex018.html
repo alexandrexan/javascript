@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Analisador de Números</title>
+</head>
+<body>
+    <header>
+        <h1>Analisando Números</h1>
+    </header>
+    <section>
+        <div>
+            <input type="number" name="numero" class="numero" placeholder="Digite um número (1-100)" min="1" max="100">
+            <button class="btn-adicionar" onclick="adicionarNumero()">Adicionar</button>
+            <button class="btn-finalizar" onclick="finalizarAnalise()">Finalizar</button>
+            <button class="btn-limpar" onclick="limparTudo()">Limpar</button>
+
+            <div id="erro" class="erro"></div>
+
+            <div class="listaNumeros">
+                <strong>Números Adicionados:</strong>
+                <div id="numerosAdicionados">Nenhum número adicionado.</div>
+            </div>
+        </div>
+        <div id="resultados" class="resultados">
+            <h3>Resultados da Análise:</h3>
+            <div class="analiseCompleta"></div>
+        </div>
+    </section>
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/alexandrexan" target="_blank"><strong>XAN</strong></a></p>
+    </footer>
+    <script src="script.js"></script>
+</html>
