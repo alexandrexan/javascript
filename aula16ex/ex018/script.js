@@ -89,8 +89,8 @@ function finalizarAnalise() {
             <div><strong>Soma de todos os valores:</strong> ${soma}</div>
             <div><strong>Números pares (${pares.length}):</strong> ${pares.length > 0 ? pares.sort((a,b) => a-b).join(', ') : 'Nenhum'}</div>
             <div><strong>Números ímpares (${impares.length}):</strong> ${impares.length > 0 ? impares.sort((a,b) => a-b).join(', ') : 'Nenhum'}</div>
-            <div><strong>Todos os números em ordem decrescente:</strong> ${numerosOrdenados.reverse().join(', ')}</div>
             <div><strong>Média:</strong> ${media}</div>
+            <div><strong>Todos os números em ordem decrescente:</strong> ${numerosOrdenados.reverse().join(', ')}</div>
         </div>
     `;
     
