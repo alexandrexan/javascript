@@ -4,8 +4,6 @@ function adicionarNumero() {
     const input = document.querySelector('.numero');
     const numeroDigitado = parseInt(input.value);
     const divErro = document.getElementById('erro');
-    const divNumerosAdicionados = document.getElementById('numerosAdicionados');
-    
     // Limpar mensagem de erro anterior
     divErro.textContent = '';
     
