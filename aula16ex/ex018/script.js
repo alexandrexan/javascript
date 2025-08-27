@@ -120,8 +120,8 @@ function limparTudo() {
     input.focus();
 }
 
-// Permitir adicionar número pressionando Enter
-document.addEventListener('DOMContentLoaded', function() {
+    // Permitir adicionar número pressionando Enter
+    document.addEventListener('DOMContentLoaded', function() {
     const input = document.querySelector('.numero');
     input.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
